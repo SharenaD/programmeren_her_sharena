@@ -1,0 +1,71 @@
+* {
+    font-family: "Lilita One", sans-serif;
+    font-style: normal;
+    background-color: rgba(162, 227, 255, 0.999);
+    color: rgb(24, 92, 119);
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    font-size: 4em;
+}
+
+h2 {
+    margin-top: 3em;
+    margin-left: 3em;
+    background-color: rgb(255, 214, 248);
+    padding: 2em;
+    border-radius: .5em;
+    border-color: rgb(24, 92, 119);
+    border-style: dotted;
+    border-width: .3em;
+}
+
+section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+article{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  border: none;
+}
+
+article img{
+  width: 15em; 
+  display: flex;
+  justify-content: center;
+  position: absolute;
+}
+
+article p{
+    font-size: 3em;
+    margin-top: 5em;
+}
+
+
+button {
+    display: inline-block;
+    text-align: center;
+    justify-content: space-between;
+    margin: 4em;
+    border: none;
+  }
+  
+  button img {
+    width: 12em; 
+    display: block;
+  }
+  
+  button p {
+    font-size: 1.2em;
+  }
+
+  footer{
+    display: flex;
+    justify-content: center;
+  }
