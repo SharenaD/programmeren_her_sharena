@@ -1,90 +1,216 @@
-// selecteert alle buttons binnen een section
-const buttons = document.querySelectorAll('section button');
+// variabelen images en koppelen van buttons (voorbeeld Janno)
 
-// selecteert alle plaatjes binnen een article
-const images = document.querySelectorAll('article img');
+// tea img
+const milkTea = document.querySelector(`.milktea-white`)
+const mangoTea = document.querySelector(`.milktea-mango`)
+const matchaTea = document.querySelector(`.milktea-matcha`)
+const pinkTea = document.querySelector(`.milktea-pink`)
+// tea buttons
+const milkTeaBtn = document.querySelector(`section:nth-of-type(1) button:nth-of-type(1)`)
+const matchaTeaBtn = document.querySelector(`section:nth-of-type(1) button:nth-of-type(2)`)
+const pinkTeaBtn = document.querySelector(`section:nth-of-type(1) button:nth-of-type(3)`)
+const mangoTeaBtn = document.querySelector(`section:nth-of-type(1) button:nth-of-type(4)`)
 
-// houdt bij welke variatie de gebruiker heeft gekozen
-let currentChoices = {
-    drink: null,    // huidige drink, null omdat er nog niks is gekozen
-    topping: null,  //huidige topping
-    straw: null     //huidige straw     
-};
+// topping img
+const tapiocaImg = document.querySelector('.topping-tapioca')
+const cocoImg = document.querySelector('.topping-coco')
+const mangoTopImg = document.querySelector('.topping-mango')
+const strawberryImg = document.querySelector('.topping-strawberry')
+// topping buttons
+const tapiocaTopBtn = document.querySelector(`section:nth-of-type(2) button:nth-of-type(1)`)
+const cocoTopBtn = document.querySelector(`section:nth-of-type(2) button:nth-of-type(2)`)
+const mangoTopBtn = document.querySelector(`section:nth-of-type(2) button:nth-of-type(3)`)
+const strawTopBtn = document.querySelector(`section:nth-of-type(2) button:nth-of-type(4)`)
 
-// forEach = elke button
-buttons.forEach((button) => {
-    // zorgt dat  er iets gebeurt bij een klik
-    button.addEventListener('click', () => {
-        // kijkt naar de waarde van attribuut data-target
-        const target = button.getAttribute('data-target');
-        
-        // Als de knop gaat over een **drankje** (bijv. "milktea"), gebeurt dit:
-        if (target.includes('milktea')) {
-            // Als er al een drankje was gekozen, verberg de afbeelding daarvan
-            if (currentChoices.drink) {
-                const previousDrink = document.querySelector(`article img[data-target="${currentChoices.drink}"]`);
-                if (previousDrink) previousDrink.classList.add('hidden'); // Verberg het vorige drankje
-            }
+// straw img
+const pinkStrawImg = document.querySelector('.straw-pink')
+const blueStrawImg = document.querySelector('.straw-blue')
+const orangeStrawImg = document.querySelector('.straw-orange')
+const purpleStrawImg = document.querySelector('.straw-purple')
+// straw buttons
+const pinkStrawBtn = document.querySelector(`section:nth-of-type(3) button:nth-of-type(1)`)
+const blueStrawBtn = document.querySelector(`section:nth-of-type(3) button:nth-of-type(2)`)
+const orangeStrawBtn = document.querySelector(`section:nth-of-type(3) button:nth-of-type(3)`)
+const purpleStrawBtn = document.querySelector(`section:nth-of-type(3) button:nth-of-type(4)`)
 
-            // Als het gekozen drankje hetzelfde is als het vorige, zet alles weer terug naar normaal
-            if (currentChoices.drink === target) {
-                resetAll(); // Zet alles terug naar de beginstand
-                return; // Stop hier met de code, want we hebben alles al teruggezet
-            }
 
-            // Sla het nieuwe gekozen drankje op en maak het zichtbaar
-            currentChoices.drink = target;
 
-            // Zoek het plaatje van het nieuwe drankje en maak het zichtbaar
-            const newDrink = document.querySelector(`article img[data-target="${target}"]`);
-            if (newDrink) newDrink.classList.remove('hidden'); // Maak het nieuwe drankje zichtbaar
-        }
-        
-        // Als de knop gaat over een **topping** (bijv. "boba"), gebeurt dit:
-        else if (target.includes('topping')) {
-            // Als er al een topping was gekozen, verberg de afbeelding daarvan
-            if (currentChoices.topping) {
-                const previousTopping = document.querySelector(`article img[data-target="${currentChoices.topping}"]`);
-                if (previousTopping) previousTopping.classList.add('hidden'); // Verberg het vorige topping
-            }
+// tea funcionaliteit
 
-            // Sla de nieuwe gekozen topping op en maak het zichtbaar
-            currentChoices.topping = target;
+milkTeaBtn.addEventListener('click', ()=>{
+    milkTea.classList.toggle('hidden')
 
-            // Zoek het plaatje van de nieuwe topping en maak het zichtbaar
-            const newTopping = document.querySelector(`article img[data-target="${target}"]`);
-            if (newTopping) newTopping.classList.remove('hidden'); // Maak de nieuwe topping zichtbaar
-        }
+    if(!milkTea.classList.contains('hidden')){
+        mangoTea.classList.add('hidden')
+        matchaTea.classList.add('hidden')
+        pinkTea.classList.add('hidden')
+    } else {
+        reset(); // reset toppings en rietjes (hulp van Ali gehad)
+        console.log('begin opnieuw!')
+    }
+})
 
-        // Als de knop gaat over een **rietje** (bijv. "paperstraw"), gebeurt dit:
-        else if (target.includes('straw')) {
-            // Als er al een rietje was gekozen, verberg de afbeelding daarvan
-            if (currentChoices.straw) {
-                const previousStraw = document.querySelector(`article img[data-target="${currentChoices.straw}"]`);
-                if (previousStraw) previousStraw.classList.add('hidden'); // Verberg het vorige rietje
-            }
 
-            // Sla het nieuwe gekozen rietje op en maak het zichtbaar
-            currentChoices.straw = target;
+mangoTeaBtn.addEventListener('click', ()=>{
+    mangoTea.classList.toggle('hidden')
 
-            // Zoek het plaatje van het nieuwe rietje en maak het zichtbaar
-            const newStraw = document.querySelector(`article img[data-target="${target}"]`);
-            if (newStraw) newStraw.classList.remove('hidden'); // Maak het nieuwe rietje zichtbaar
-        }
-    });
+    if(!mangoTea.classList.contains('hidden')){
+        milkTea.classList.add('hidden')
+        matchaTea.classList.add('hidden')
+        pinkTea.classList.add('hidden')
+    } else {
+        reset(); 
+        console.log('begin opnieuw!')
+    }
+})
+
+
+matchaTeaBtn.addEventListener('click', ()=>{
+    matchaTea.classList.toggle('hidden')
+
+    if(!matchaTea.classList.contains('hidden')){
+        milkTea.classList.add('hidden')
+        mangoTea.classList.add('hidden')
+        pinkTea.classList.add('hidden')
+    } else {
+        reset(); 
+        console.log('begin opnieuw!')
+    }
+})
+
+
+pinkTeaBtn.addEventListener('click', ()=>{
+    pinkTea.classList.toggle('hidden')
+
+    if(!pinkTea.classList.contains('hidden')){
+        mangoTea.classList.add('hidden')
+        matchaTea.classList.add('hidden')
+        milkTea.classList.add('hidden')
+    } else {
+        reset(); 
+        console.log('begin opnieuw!')
+    }
+})
+
+// toppings functionaliteit
+
+tapiocaTopBtn.addEventListener('click', ()=>{
+    tapiocaImg.classList.toggle('hidden')
+
+    if(!tapiocaImg.classList.contains('hidden')){
+        mangoTopImg.classList.add('hidden')
+        strawberryImg.classList.add('hidden')
+        cocoImg.classList.add('hidden')
+    }
+})
+
+cocoTopBtn.addEventListener('click', ()=>{
+    cocoImg.classList.toggle('hidden')
+
+    if(!cocoImg.classList.contains('hidden')){
+        mangoTopImg.classList.add('hidden')
+        strawberryImg.classList.add('hidden')
+        tapiocaImg.classList.add('hidden')
+    }
+})
+
+mangoTopBtn.addEventListener('click', ()=>{
+    mangoTopImg.classList.toggle('hidden')
+
+    if(!mangoTopImg.classList.contains('hidden')){
+        cocoImg.classList.add('hidden')
+        strawberryImg.classList.add('hidden')
+        tapiocaImg.classList.add('hidden')
+    }
+})
+
+strawTopBtn.addEventListener('click', ()=>{
+    strawberryImg.classList.toggle('hidden')
+
+    if(!strawberryImg.classList.contains('hidden')){
+        cocoImg.classList.add('hidden')
+        mangoTopImg.classList.add('hidden')
+        tapiocaImg.classList.add('hidden')
+    }
+})
+
+// straw functionaliteit 
+
+pinkStrawBtn.addEventListener('click', ()=>{
+    pinkStrawImg.classList.toggle('hidden')
+
+    if(!pinkStrawImg.classList.contains('hidden')){
+        blueStrawImg.classList.add('hidden')
+        purpleStrawImg.classList.add('hidden')
+        orangeStrawImg.classList.add('hidden')
+    }
+})
+blueStrawBtn.addEventListener('click', ()=>{
+    blueStrawImg.classList.toggle('hidden')
+
+    if(!blueStrawImg.classList.contains('hidden')){
+        pinkStrawImg.classList.add('hidden')
+        purpleStrawImg.classList.add('hidden')
+        orangeStrawImg.classList.add('hidden')
+    }
+})
+orangeStrawBtn.addEventListener('click', ()=>{
+    orangeStrawImg.classList.toggle('hidden')
+
+    if(!orangeStrawImg.classList.contains('hidden')){
+        blueStrawImg.classList.add('hidden')
+        purpleStrawImg.classList.add('hidden')
+        pinkStrawImg.classList.add('hidden')
+    }
+})
+purpleStrawBtn.addEventListener('click', ()=>{
+    purpleStrawImg.classList.toggle('hidden')
+
+    if(!purpleStrawImg.classList.contains('hidden')){
+        blueStrawImg.classList.add('hidden')
+        pinkStrawImg.classList.add('hidden')
+        orangeStrawImg.classList.add('hidden')
+    }
+})
+
+
+// Als de gebruiker de tea verwijdert, dan verdwijnt de rest ook mee
+
+function reset() {
+    // verberg toppings
+    tapiocaImg.classList.add('hidden');
+    cocoImg.classList.add('hidden');
+    mangoTopImg.classList.add('hidden');
+    strawberryImg.classList.add('hidden');
+
+    // verberg straws
+    pinkStrawImg.classList.add('hidden');
+    blueStrawImg.classList.add('hidden');
+    orangeStrawImg.classList.add('hidden');
+    purpleStrawImg.classList.add('hidden');
+}
+
+
+// audio (chatGPT gevraagd om voorbeeld mp3 toe te voegen)
+document.querySelector('article').addEventListener('click', function() {
+    const audio = new Audio('milkshake-being-shaken-43354.mp3');
+    audio.play();
+
+    // animatie, voeg class toe (chatGPT voorbeeld opgezocht, zie css)
+    this.classList.add('shake');
+
+    // verwijder shake na audio (animatieduur = gelijk aan audio)
+    setTimeout(() => {
+        this.classList.remove('shake');
+        alert('🧋🩵 Enjoy your Boba! 🩵🧋') //(tip van Sama)
+    }, 9000); // 9000ms= 9 seconden
 });
 
-// Functie om **alles terug te zetten** naar de beginstand (verberg alles wat is gekozen)
-function resetAll() {
-    // Kijk voor elk item (drankje, topping, rietje) of er iets is gekozen
-    Object.keys(currentChoices).forEach((key) => {
-        // Als er iets is gekozen, verberg het plaatje daarvan
-        if (currentChoices[key]) {
-            const img = document.querySelector(`article img[data-target="${currentChoices[key]}"]`);
-            if (img) img.classList.add('hidden'); // Verberg het plaatje
-        }
-    });
 
-    // Zet alles terug naar "geen keuze" (null)
-    currentChoices = { drink: null, topping: null, straw: null };
-}
+// BRONVERMELDING
+// const variabelen voorbeeld Janno
+// function reset aan Ali gevraagd 
+// Sama gevraagd hoe ik een melding kon geven (alert)
+// audio toevoegen chatGPT gevraagd voorbeeld te geven, let veranderd naar const
+
+// audio is van: https://pixabay.com/sound-effects/search/milkshake/
