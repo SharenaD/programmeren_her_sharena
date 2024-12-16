@@ -202,7 +202,7 @@ document.querySelector('article').addEventListener('click', function() {
     // verwijder shake na audio (animatieduur = gelijk aan audio)
     setTimeout(() => {
         this.classList.remove('shake');
-        alert('🧋🩵 Enjoy your Boba! 🩵🧋') //(tip van Sama)
+        this.textContent = '🧋🩵 Enjoy your Boba! 🩵🧋' //(tip van Janno)
     }, 9000); // 9000ms= 9 seconden
 });
 
@@ -210,7 +210,7 @@ document.querySelector('article').addEventListener('click', function() {
 // BRONVERMELDING
 // const variabelen voorbeeld Janno
 // function reset aan Ali gevraagd 
-// Sama gevraagd hoe ik een melding kon geven (alert)
+// Janno geholpen met alert te veranderen naarf textContent
 // audio toevoegen chatGPT gevraagd voorbeeld te geven, let veranderd naar const
 
 // audio is van: https://pixabay.com/sound-effects/search/milkshake/
